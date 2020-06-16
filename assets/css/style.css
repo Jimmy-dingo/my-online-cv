@@ -3,44 +3,21 @@
 /****************************************************************************************** */
 
 /*************************** Responsive Grid System Set-up ******************************** */
-/*  SECTIONS  ============================================================================= */
-
-.section {
-	clear: both;
-	padding: 0px;
-	margin: 0px;
-}
-
-/*  GROUPING  ============================================================================= */
-
-
-.group:before,
-.group:after {
-    content: "";
-    display: table;
-}
-.group:after {
-    clear: both;
-}
-.group {
-    zoom:1; /* For IE 6/7 (trigger hasLayout) */
-}
-
 /*  GRID COLUMN SETUP   ==================================================================== */
 
-.col {
+.column {
 	display: block;
 	float: left;
 	margin: 1% 0 1% 1.6%;
 }
 
-.col:first-child { margin-left: 0; } /* all browsers except IE6 and lower */
+.column:first-child { margin-left: 0; } /* all browsers except IE6 and lower */
 
 
 /*  REMOVE MARGINS AS ALL GO FULL WIDTH AT 480 PIXELS */
 
 @media only screen and (max-width: 480px) {
-	.col { 
+	.column { 
 		margin: 1% 0 1% 0%;
 	}
 }
@@ -147,19 +124,37 @@
     font-size: 10px;
 	font-family: 'Merriweather', serif;
 	--key-color: #5A9345;
+	--background-color: #d6e6cf;
 	--key-gray: rgb(65, 65, 65);
+	--font-gray: #333333;
 }
 
 body {
-    font-size: 1.8rem;
+	font-size: 1.8rem;
+	color: var(--font-gray);
+	overflow-x: hidden;
 }
 
 h1 {
-    font-size: 3.5rem;
+	font-size: 2.8rem;
+	color: var(--font-gray);
 }
 
 h2 {
-    font-size: 2.8rem;
+	font-size: 2.2rem;
+	color: var(--font-gray);
+}
+
+h3 {
+	font-size: 2rem;
+	color: var(--font-gray);
+}
+
+p {
+	font-size: 1.5rem;
+	font-weight: 300;
+	line-height: 2rem;
+	padding: 1.6rem;
 }
 
 
@@ -261,7 +256,7 @@ h2 {
 
 	.close-menu-icon {
 		z-index: 1001;
-		display: block;
+		display: none;
 		position: absolute;
 		top: 2vw; left: 2vw;
 		background-color: rgba(255, 255, 255, 0);
@@ -316,6 +311,7 @@ h2 {
 	}
 	
 	.icon-social {
+		display: none;
 		width: 4rem;
 		height: auto;
 		border-radius: 50%;
@@ -333,6 +329,7 @@ h2 {
 
 	
 	.main-nav-mobile li a{
+		display: none;
 		color: white;
 		text-decoration: none;
 		text-shadow: 0px 0px 10px rgb(92, 92, 92);
@@ -354,14 +351,15 @@ h2 {
 	background-image: url(../images/desktop-background-head-2.jpg);
 	filter: grayscale(40%) brightness(80%);
 	background-position: center;
-	position: absolute;
+	position: relative;
 	top: 0; left: 0;
-	width: 100%;
-	height: 655px;
+	width: 100vw;
+	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	overflow-x: hidden;
 }
 
 .headline h1{
@@ -384,3 +382,121 @@ h2 {
 	font-weight: 600;
 }
 
+
+/********************************** General Sections Styling ************************************* */
+
+.container {
+	max-width: 960px;
+	margin: 0px auto;
+}
+
+.section {
+	margin: 0 auto;
+	height: 100vh;
+}
+
+.presentation {
+	margin: 0 auto;
+	border-bottom: 1px solid var(--key-color);
+	max-width: 470px;
+	margin: 30px auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.presentation h1{
+	color: var(--key-color);
+	text-align: center;
+	font-size: 5rem;
+	font-weight: 500;
+	margin-bottom: 2rem;
+}
+
+.presentation h2{
+	text-align: center;
+	line-height: 3rem;
+	font-weight: 300;
+	font-size: 2rem;
+	margin-bottom: 10px;
+}
+
+/********************************** About Me section Styling ************************************* */
+
+.about-me {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+[alt="my-personal-photo"] {
+	width: 200px;
+	height: auto;
+	border-radius: 50%;
+	border: 6px solid rgb(167, 167, 167);
+}
+
+.about-me figure{
+	padding: 1.6rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.about-me-description{
+	margin-left: -10px;
+}
+
+@media only screen and (max-width: 480px){
+	
+	.about-me-description{
+		margin-left: 0px;
+	}
+}
+
+.about-me-description p{
+	text-align: justify;
+}
+
+.description-details {
+	border: 1px solid var(--key-color);
+}
+
+.description-details h3 {
+	font-size: 1.7rem;
+}
+
+.description-detail{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+/********************************** My online CV section Styling ********************************* */
+
+section:nth-child(3){
+	background-color: var(--background-color);
+}
+
+.my-online-cv {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.cv-content div:nth-child(1) h3{
+	text-align: center;
+	color: var(--key-color);
+}
+
+.cv-content div:nth-child(1) li{
+	list-style-type: none;
+	text-align: center;
+	font-size: 1.5rem;
+	line-height: 4rem;
+}
